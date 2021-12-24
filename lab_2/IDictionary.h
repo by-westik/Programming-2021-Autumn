@@ -96,7 +96,7 @@ template <class Key, class Element> Element& TwoHashDictionary <Key,Element>::ge
                 int secondIndex = this -> secondHashFunction(_key);
 
                 for(int i = 0; i < this -> capacity; i++){
-                        if(index + i * secondIndex >= this -> getCapacity()){
+                        if(index + i * secondIndex >= this -> capacity){
                                 std::cout << "There is not this key in hashTable (get)" << std::endl;
                                 break;
                         };
@@ -112,7 +112,7 @@ template <class Key, class Element> void TwoHashDictionary <Key,Element>::add(co
         Item <Key,Element> p(_key, _element);
         int secondIndex = this -> secondHashFunction(_key);
         for(int i = 0; i < this -> capacity; i++){
-                if(index + i * secondIndex >= this -> getCapacity()){
+                if(index + i * secondIndex >= this -> capacity){
                         this -> resize();
                         this -> add(_key, _element);
                         break;
@@ -130,7 +130,7 @@ template <class Key, class Element> void TwoHashDictionary <Key,Element>::remove
         int index = this -> hashFunction(_key);
         int secondIndex = this -> secondHashFunction(_key);
         for(int i = 0; i < this -> capacity; i++){
-                if(index + i * secondIndex >= this -> getCapacity()){
+                if(index + i * secondIndex >= this -> capacity){
                         std::cout << "There is not this key in hashTable (remove)" << std::endl;
                         return;
                 }
